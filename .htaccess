@@ -1,0 +1,15 @@
+#Se configura para evitar la navegación entre directorios, si no encuentra un index no debe de mostrar la carpeta.
+
+#evita ver el contenido de las carpetas.
+Options All -Indexes
+#activa el RewriteEngine
+RewriteEngine on
+
+#es una condición verdadera, busca un directorio válido.
+RewriteCond %{REQUEST_FILENAME} !-d
+#debe ser verdadera para que se procese los archivos.
+RewriteCond %{REQUEST_FILENAME} !-f
+#REQUEST_FILENAME; es una variable que contiene urls.
+
+#Reescribe los módulos que se pasan por la url. Y se obtiene los parámetros de la url.
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
